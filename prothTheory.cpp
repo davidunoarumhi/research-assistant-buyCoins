@@ -23,14 +23,20 @@ bool isProthNumber(int n)
     return false; 
 }
 
-bool isProthPrime(int n) 
+bool isProthPrime(int n, int i = 2) 
 {
-    for (int i = 2; i < n; i++){ 
-        if (n % i == 0) {
-            return false; 
-        }
-    }
-    return true; 
+  
+    // base cases 
+    if (n <= 2) 
+        return (n == 2) ? true : false; 
+    if (n % i == 0) 
+        return false; 
+    if (i * i > n) 
+        return true; 
+  
+    // check for next divisor 
+    return isProthPrime(n, i + 1); 
+    
 }
 
 int main() 
